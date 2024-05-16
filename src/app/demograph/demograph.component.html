@@ -1,0 +1,54 @@
+<div class="container">
+    <div [formGroup]="group" class="box">
+        <div class="input-container">
+            <label for="name"> Name </label>
+            <input id="name" type="text" formControlName="name"> 
+        </div>
+        <div class="input-container">
+            <label for="gender"> Gender </label>
+            <select id="gender" formControlName="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+        <div class="input-container">
+            <label for="date"> Birth Date </label>
+            <input type="date" id="date" formControlName="birth">
+        </div>
+        <div class="input-container">
+            <label for="occupation"> Occupation </label>
+            <input id="occupation" type="text" formControlName="occupation">
+        </div>        
+        <div class="input-container">
+            <label for="country"> Nationality </label>
+            <input id="country" type="text" formControlName="country">
+            <img
+                src="https://flagcdn.com/{{ group.get('country')?.value | iso3166}}.svg"
+                [alt]="group.get('country')?.value"
+                *ngIf="group.get('country')?.value | iso3166; else elseBlock"
+            >   
+            <ng-template #elseBlock>
+              <span></span>
+            </ng-template>         
+        </div>
+        
+        <button [disabled]="!group.valid"> Save </button>
+    </div>
+
+    <pre>{{ group.value | json }}</pre>
+</div>
+
+  
+
+<!-- 
+    Age
+    Gender
+    Occupation
+    Income
+    Nationality 
+    Favorite Food
+    
+    => customer pipe convert "country name" to "country code"
+    => Directive => Attribute show the picture from propmt
+ -->

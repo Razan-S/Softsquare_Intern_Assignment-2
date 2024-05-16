@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="login-box" [formGroup]="group">
+        <p id="title">Login</p>
+        
+        <label for="email">Email</label>
+        <input id="email" type="email" formControlName="email">
+        <div *ngIf="group.get('email')?.invalid && group.get('email')?.touched">
+            <small *ngIf="group.get('email')?.errors?.['required']">Email required</small>
+            <small *ngIf="group.get('email')?.errors?.['pattern']">Invalid email format.</small>
+        </div>
+
+        <label for="password">Password</label>
+        <input id="password" type="password" formControlName="password">
+        <div *ngIf="group.get('password')?.invalid && group.get('password')?.touched">
+            <small *ngIf="group.get('password')?.errors?.['required']">Password required</small>
+            <small *ngIf="group.get('password')?.errors?.['minlength']">Password must be at least 8 characters long.</small>
+            <small *ngIf="group.get('password')?.errors?.['maxlength']">Password cannot be more than 15 characters long.</small>
+        </div>
+
+        <button id="button" [disabled]="!group.valid" [routerLink]="['/infor']">Login</button>
+    </div>
+  
+    <!-- <pre>{{ group.value | json }}</pre> -->
+</div>  
