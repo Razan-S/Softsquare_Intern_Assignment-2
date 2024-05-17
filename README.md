@@ -1,9 +1,13 @@
 # Assignment2FormDirectivePipe
 
 Directive
-- Attribute => Change The image src every time you type country name in the nationality box (the image will show the flag of the country)
 
--
+Attribute Directive
+The attribute directive should change the image source every time a country name is typed in the nationality box. The image displayed will correspond to the flag of the entered country.
+
+Structural Directive
+The structural directive should show all summarized information when the save button is clicked.
 
 Pipe
-- Convert country name to the country code according to the ISO3166 standard (use for specify the country in URL of the directive attribute)
+
+The pipe should convert the country name to the country code according to the ISO3166 standard. This converted code will be used to specify the country in the URL of the attribute directive.
