@@ -2,12 +2,13 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Iso3166Pipe } from '../iso3166.pipe';
-import { FlagDirective } from '../flag.directive';
+import { ScaleOnHoverDirective } from '../scale-on-hover.directive';
+import { ShowIfNotNullDirective } from '../show-if-not-null.directive';
 
 @Component({
   selector: 'app-demograph',
   standalone: true,
-  imports: [FormsModule, CommonModule, ReactiveFormsModule, Iso3166Pipe, FlagDirective],
+  imports: [FormsModule, CommonModule, ReactiveFormsModule, Iso3166Pipe, ScaleOnHoverDirective, ShowIfNotNullDirective],
   templateUrl: './demograph.component.html',
   styleUrls: ['./demograph.component.css']
 })

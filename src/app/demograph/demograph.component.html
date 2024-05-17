@@ -1,10 +1,10 @@
 <div class="container">
     <div [formGroup]="group" class="box">
-        <div class="input-container">
+        <div class="input-container" appScaleOnHover>
             <label for="name"> Name </label>
             <input id="name" type="text" formControlName="name"> 
         </div>
-        <div class="input-container">
+        <div class="input-container" appScaleOnHover>
             <label for="gender"> Gender </label>
             <select id="gender" formControlName="gender">
                 <option value="male">Male</option>
@@ -12,19 +12,19 @@
                 <option value="other">Other</option>
             </select>
         </div>
-        <div class="input-container">
+        <div class="input-container" appScaleOnHover>
             <label for="date"> Birth Date </label>
             <input type="date" id="date" formControlName="birth">
         </div>
-        <div class="input-container">
+        <div class="input-container" appScaleOnHover>
             <label for="occupation"> Occupation </label>
             <input id="occupation" type="text" formControlName="occupation">
         </div>        
-        <div class="input-container">
+        <div class="input-container" appScaleOnHover>
             <label for="country"> Nationality </label>
             <input id="country" type="text" formControlName="country">
             <img
-                src="https://flagcdn.com/{{ group.get('country')?.value | iso3166}}.svg"
+                appShowIfNotNull="{{group.get('country')?.value | iso3166}}"
                 [alt]="group.get('country')?.value"
                 *ngIf="group.get('country')?.value | iso3166; else elseBlock"
             >   
