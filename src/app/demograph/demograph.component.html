@@ -1,10 +1,10 @@
 <div class="container">
     <div [formGroup]="group" class="box">
-        <div class="input-container" appScaleOnHover>
+        <div class="input-container">
             <label for="name"> Name </label>
             <input id="name" type="text" formControlName="name"> 
         </div>
-        <div class="input-container" appScaleOnHover>
+        <div class="input-container">
             <label for="gender"> Gender </label>
             <select id="gender" formControlName="gender">
                 <option value="male">Male</option>
@@ -12,19 +12,19 @@
                 <option value="other">Other</option>
             </select>
         </div>
-        <div class="input-container" appScaleOnHover>
+        <div class="input-container">
             <label for="date"> Birth Date </label>
             <input type="date" id="date" formControlName="birth">
         </div>
-        <div class="input-container" appScaleOnHover>
+        <div class="input-container">
             <label for="occupation"> Occupation </label>
             <input id="occupation" type="text" formControlName="occupation">
         </div>        
-        <div class="input-container" appScaleOnHover>
+        <div class="input-container">
             <label for="country"> Nationality </label>
             <input id="country" type="text" formControlName="country">
             <img
-                appShowIfNotNull="{{group.get('country')?.value | iso3166}}"
+                appShowIfNotNull="{{ group.get('country')?.value | iso3166 }}"
                 [alt]="group.get('country')?.value"
                 *ngIf="group.get('country')?.value | iso3166; else elseBlock"
             >   
@@ -33,13 +33,37 @@
             </ng-template>         
         </div>
         
-        <button [disabled]="!group.valid"> Save </button>
+        <button [disabled]="!group.valid" (click)="save()"> Save </button>
     </div>
+    <!-- <pre>{{ group.value | json }}</pre>  -->
 
-    <pre>{{ group.value | json }}</pre>
+    <div class="summary-container" *appShowInformation="isSubmitted">
+        <h2>Submitted Data</h2>
+        <ul>
+          <li>
+            <strong>Name:</strong>
+            <span>{{ group.controls['name'].value }}</span>
+          </li>
+          <li>
+            <strong>Gender:</strong>
+            <span>{{ group.controls['gender'].value }}</span>
+          </li>
+          <li>
+            <strong>Birth Date:</strong>
+            <span>{{ group.controls['birth'].value }}</span>
+          </li>
+          <li>
+            <strong>Occupation:</strong>
+            <span>{{ group.controls['occupation'].value }}</span>
+          </li>
+          <li>
+            <strong>Country:</strong>
+            <span>{{ group.controls['country'].value }}</span>
+          </li>
+        </ul>
+      </div>      
 </div>
 
-  
 
 <!-- 
     Age
@@ -47,8 +71,8 @@
     Occupation
     Income
     Nationality 
-    Favorite Food
     
     => customer pipe convert "country name" to "country code"
     => Directive => Attribute show the picture from propmt
+                 => Scale and hide other input field
  -->
